@@ -44,3 +44,11 @@ Antes de rodar o projeto, garanta que você possui:
 1. **Clone o repositório:**
    ```bash
    git clone https://github.com/seuusuario/sistema-barbearia.git
+
+
+---
+
+## 🚀 Integrantes da equipe:
+- Gabriel Ferreira Americo
+- Gabriel da Cunha Prudêncio
+- Iago Veras de Melo
