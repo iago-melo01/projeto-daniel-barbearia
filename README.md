@@ -52,3 +52,8 @@ Antes de rodar o projeto, garanta que você possui:
 - Gabriel Ferreira Americo
 - Gabriel da Cunha Prudêncio
 - Iago Veras de Melo
+
+
+## ⬇️ Criação das tabelas do banco de dados
+
+- Importe no seu PHPMyAdmin as tabelas(.sql): agendamento,barbeiros e usuarios
