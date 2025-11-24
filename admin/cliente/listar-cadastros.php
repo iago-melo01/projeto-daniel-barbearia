@@ -1,6 +1,6 @@
 <?php
     $sql = "SELECT * FROM usuarios ";
-    $resultado = mysqli_query($conexao, $sql);
+    $resultado = mysqli_query($connect, $sql);
     if (mysqli_num_rows($resultado) > 0) {
         while($dados = mysqli_fetch_array($resultado))
     {

@@ -8,6 +8,7 @@
 <body>
     <header>
         <h2> Painel Administrador da Barbearia </h2>
+        <a href="?query=cortes">Criar página</a>
         <a href="?query=cadastra-barbeiro">Cadastro de Barbeiros</a>
         <a href="?query=login-cliente">Login de usuário</a>
         <a href="?query=agendamento">Horários Disponíveis</a>
