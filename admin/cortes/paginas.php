@@ -9,11 +9,11 @@
     </thead>
     <tbody>
 <?php
-    require_once "../conectaMYSQL.php";
-
-    echo "<br><br><a href='?pg=cortes-form'>Criar página</a>";
+    require_once(__DIR__ . "/../conectaMYSQL.php");
 
     echo "<h1>Lista de páginas</h1>";
+
+    echo "<h2><a href='?query=admin/admin'>Voltar</a><br></h2>";
 
     $sql = "SELECT * FROM cortes";
     $resultado = mysqli_query($connect, $sql);
@@ -25,14 +25,20 @@
             echo "<td>" . $dados['descricao'] .  "</td>";
             echo "<td>" . $dados['preco'] .  "</td>";
             echo "<td>
-                    <a href='?pg=cortes-form-alterar&id=" . $dados['id'] . "'>Editar</a> |
-                    <a href='?pg=cortes-excluir&id=" . $dados['id'] . "'>Excluir</a>
+                    <a href='?query=admin/cortes/cortes-form&id=" . $dados['id'] . "'>Criar</a> |
+                    <a href='?query=admin/cortes/cortes-form-alterar&id=" . $dados['id'] . "'>Editar</a> |
+                    <a href='?query=admin/cortes/cortes-excluir&id=" . $dados['id'] . "'>Excluir</a>
                   </td>";
             echo "</tr>";
         }
     }else{
         echo "<h3>Nenhuma página criada!</h3>";
+        echo "<a href='?query=admin/cortes/cortes-form'>Criar página</a><br><br>";
     }
+    
 ?>
+
+
+
 
 

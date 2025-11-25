@@ -1,5 +1,5 @@
 <h2>Criação de páginas</h2>
-<form action="?pg=criarpagina" method="post">
+<form action="?query=admin/cortes/cortes" method="post">
     <label>Nome do corte:</label><br>
     <input type="text" name ="corte"><br>
     <label >Descrição:</label><br>
@@ -10,5 +10,5 @@
     <input type="text" name="imagem"><br>
     <br>
     <input type="submit" value="Criar página"><br><br>
-    <a href="?pg=paginas">Voltar</a>
+    <a href="?query=admin/cortes/paginas">Voltar</a>
 </form>

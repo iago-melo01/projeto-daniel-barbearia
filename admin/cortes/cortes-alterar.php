@@ -1,6 +1,6 @@
 <?php
 
-require_once "../conectaMYSQL.php";
+require_once(__DIR__ . "/../conectaMYSQL.php");
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $produto = $_POST["corte"];
@@ -19,14 +19,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $executa = mysqli_query($connect, $sql);
     if($executa) {
         echo "<h2>Alteração realizada com sucesso.</h2>";
-        echo "<a href='?pg=paginas'>Voltar</a>";
+        echo "<a href='?query=admin/cortes/paginas'>Voltar</a>";
     }else{
         echo "<h2>Erro ao alterar página.</h2>";
-        echo "<a href='?pg=paginas'>Voltar</a>";
+        echo "<a href='?query=admin/cortes/paginas'>Voltar</a>";
     }
 }else{
     echo "<h2>Acesso negado.</h2>";
-    echo "<a href='?pg=paginas'>Voltar</a>";
+    echo "<a href='?query=admin/cortes/paginas'>Voltar</a>";
 }
 
 

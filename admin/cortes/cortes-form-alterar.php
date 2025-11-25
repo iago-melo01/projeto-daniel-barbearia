@@ -1,5 +1,5 @@
 <?php
-    require_once "../conectaMYSQL.php";
+    require_once(__DIR__ . "/../conectaMYSQL.php");
     $id = $_GET['id'];
     $sql = "SELECT * FROM cortes WHERE id = '$id'";
     $resultado = mysqli_query($connect, $sql);
@@ -10,7 +10,7 @@
 ?>
 
 <h2>Alteração de páginas</h2>
-<form action="?pg=cortes-alterar" method="post">
+<form action="?query=admin/cortes/cortes-alterar" method="post">
     <input type="hidden" name="id" value="<?=$pagina['id']?>">
     <label>Nome do corte:</label><br>
     <input type="text" name="corte" value="<?=$pagina['corte']?>"><br>
@@ -21,7 +21,7 @@
     <label>Imagem do corte (URL):</label><br>
     <input type="text" name="imagem" value="<?=$pagina['imagem']?>"><br>
     <input type="submit" value="Alterar página"><br><br>
-    <a href='?pg=paginas'>Voltar</a>
+    <a href='?query=admin/cortes/paginas'>Voltar</a>
 </form>
 
 <?php
