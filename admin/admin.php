@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +7,12 @@
 </head>
 <body>
     <header>
-        <h2> Painel Administrador da Barbearia </h2>
-        <a href="?query=admin/cortes/paginas">Gerenciamento de páginas</a><br><br>
-        <a href="?query=cadastra-barbeiro">Cadastro de Barbeiros</a><br><br>
-        <a href="?query=login-cliente">Login de usuário</a><br><br>
-        <a href="?query=agendamento">Horários Disponíveis</a>
+        <h2>Painel Administrador da Barbearia</h2>
+        <hr>
+        <a href="?query=admin/cortes/painel-admin-cortes">Gerenciamento de Cortes</a><br><br>
+        <a href="?query=admin/barbeiro/painel-admin-barbeiro">Gerenciamento de Barbeiros</a><br><br>
+        <a href="?query=admin/cliente/painel-admin-cliente">Gerenciamento de Clientes</a><br><br>
+        <a href="?query=admin/agendamento/painel-admin-agendamento">Gerenciamento de Agendamentos</a>
     </header>
-</master>
 </body>
 </html>
