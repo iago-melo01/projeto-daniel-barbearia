@@ -5,9 +5,9 @@
     $sqlBarbeiros = "SELECT * FROM barbeiros";
     $barbeiros = mysqli_query($connect, $sqlBarbeiros);
     
-    // Buscar cortes para o select
-    $sqlCortes = "SELECT * FROM cortes";
-    $cortes = mysqli_query($connect, $sqlCortes);
+    // Buscar servicos para o select
+    $sqlServicos = "SELECT * FROM servicos";
+    $servicos = mysqli_query($connect, $sqlServicos);
 ?>
 
 <h2>Novo Agendamento</h2>
@@ -24,13 +24,13 @@
         ?>
     </select><br><br>
     
-    <label>Corte:</label><br>
-    <select name="corte" required>
-        <option value="">Selecione um corte</option>
+    <label>Serviço:</label><br>
+    <select name="servico" required>
+        <option value="">Selecione um serviço</option>
         <?php
-            if(mysqli_num_rows($cortes) > 0) {
-                while($c = mysqli_fetch_array($cortes)) {
-                    echo "<option value='" . $c['corte'] . "'>" . $c['corte'] . " - R$ " . $c['preco'] . "</option>";
+            if(mysqli_num_rows($servicos) > 0) {
+                while($s = mysqli_fetch_array($servicos)) {
+                    echo "<option value='" . $s['servico'] . "'>" . $s['servico'] . " - R$ " . $s['preco'] . "</option>";
                 }
             }
         ?>

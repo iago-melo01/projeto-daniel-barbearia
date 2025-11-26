@@ -12,7 +12,7 @@
         <tr>
             <th>ID</th>
             <th>Barbeiro</th>
-            <th>Corte</th>
+            <th>Serviço</th>
             <th>Data/Horário</th>
             <th>Ações</th>
         </tr>
@@ -31,7 +31,7 @@
             echo "<tr>";
             echo "<td>" . $dados['id'] . "</td>";
             echo "<td>" . ($dados['nome_barbeiro'] ? $dados['nome_barbeiro'] : 'Barbeiro #' . $dados['barbeiro']) . "</td>";
-            echo "<td>" . $dados['corte'] . "</td>";
+            echo "<td>" . $dados['servico'] . "</td>";
             echo "<td>" . date('d/m/Y H:i', strtotime($dados['horario'])) . "</td>";
             echo "<td>
                     <a href='?query=admin/agendamento/agendamento-form-editar&id=" . $dados['id'] . "'>Editar</a> |

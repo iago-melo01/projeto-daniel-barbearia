@@ -9,7 +9,7 @@
     <header>
         <h2>Painel Administrador da Barbearia</h2>
         <hr>
-        <a href="?query=admin/cortes/painel-admin-cortes">Gerenciamento de Cortes</a><br><br>
+        <a href="?query=admin/servicos/painel-admin-servicos">Gerenciamento de Serviços</a><br><br>
         <a href="?query=admin/barbeiro/painel-admin-barbeiro">Gerenciamento de Barbeiros</a><br><br>
         <a href="?query=admin/cliente/painel-admin-cliente">Gerenciamento de Clientes</a><br><br>
         <a href="?query=admin/agendamento/painel-admin-agendamento">Gerenciamento de Agendamentos</a>

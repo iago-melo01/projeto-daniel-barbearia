@@ -3,11 +3,11 @@
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $barbeiro = $_POST["barbeiro"];
-        $corte = $_POST["corte"];
+        $servico = $_POST["servico"];
         $horario = $_POST["horario"];
 
-        $sql = "INSERT INTO agendamento (barbeiro, corte, horario) 
-                VALUES ('$barbeiro', '$corte', '$horario')";
+        $sql = "INSERT INTO agendamento (barbeiro, servico, horario) 
+                VALUES ('$barbeiro', '$servico', '$horario')";
         
         $executa = mysqli_query($connect, $sql);
         
@@ -25,4 +25,3 @@
         echo "<a href='?query=admin/agendamento/painel-admin-agendamento'>Voltar</a>";
     }
 ?>
-

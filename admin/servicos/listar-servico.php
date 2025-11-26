@@ -2,16 +2,16 @@
     require_once(__DIR__ . "/../conectaMYSQL.php");
 ?>
 
-<h1>Cortes Cadastrados</h1>
-<a href="?query=admin/cortes/cadastro-corte">Cadastrar Novo Corte</a> | 
-<a href="?query=admin/cortes/painel-admin-cortes">Voltar ao Painel</a>
+<h1>Serviços Cadastrados</h1>
+<a href="?query=admin/servicos/cadastro-servico">Cadastrar Novo Serviço</a> | 
+<a href="?query=admin/servicos/painel-admin-servicos">Voltar ao Painel</a>
 <hr>
 
 <table border="1" cellpadding="10">
     <thead>
         <tr>
             <th>ID</th>
-            <th>Corte</th>
+            <th>Serviço</th>
             <th>Descrição</th>
             <th>Preço</th>
             <th>Imagem</th>
@@ -20,25 +20,25 @@
     </thead>
     <tbody>
 <?php
-    $sql = "SELECT * FROM cortes";
+    $sql = "SELECT * FROM servicos";
     $resultado = mysqli_query($connect, $sql);
 
     if(mysqli_num_rows($resultado) > 0) {
         while($dados = mysqli_fetch_array($resultado)) {
             echo "<tr>";
             echo "<td>" . $dados['id'] . "</td>";
-            echo "<td>" . $dados['corte'] . "</td>";
+            echo "<td>" . $dados['servico'] . "</td>";
             echo "<td>" . $dados['descricao'] . "</td>";
             echo "<td>R$ " . $dados['preco'] . "</td>";
             echo "<td>" . $dados['imagem'] . "</td>";
             echo "<td>
-                    <a href='?query=admin/cortes/corte-form-editar&id=" . $dados['id'] . "'>Editar</a> |
-                    <a href='?query=admin/cortes/corte-excluir&id=" . $dados['id'] . "'>Excluir</a>
+                    <a href='?query=admin/servicos/servico-form-editar&id=" . $dados['id'] . "'>Editar</a> |
+                    <a href='?query=admin/servicos/servico-excluir&id=" . $dados['id'] . "'>Excluir</a>
                   </td>";
             echo "</tr>";
         }
     } else {
-        echo "<tr><td colspan='6'>Nenhum corte cadastrado.</td></tr>";
+        echo "<tr><td colspan='6'>Nenhum serviço cadastrado.</td></tr>";
     }
 ?>
     </tbody>

@@ -4,12 +4,12 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_POST["id"];
         $barbeiro = $_POST["barbeiro"];
-        $corte = $_POST["corte"];
+        $servico = $_POST["servico"];
         $horario = $_POST["horario"];
 
         $sql = "UPDATE agendamento SET 
                 barbeiro = '$barbeiro',
-                corte = '$corte',
+                servico = '$servico',
                 horario = '$horario'
                 WHERE id = '$id'";
 
@@ -28,4 +28,3 @@
         echo "<a href='?query=admin/agendamento/painel-admin-agendamento'>Voltar</a>";
     }
 ?>
-
