@@ -29,8 +29,8 @@
         <option value="">Selecione um serviço</option>
         <?php
             if(mysqli_num_rows($servicos) > 0) {
-                while($s = mysqli_fetch_array($servicos)) {
-                    echo "<option value='" . $s['servico'] . "'>" . $s['servico'] . " - R$ " . $s['preco'] . "</option>";
+                while($servico = mysqli_fetch_array($servicos)) {
+                    echo "<option value='" . $servico['servico'] . "'>" . $servico['servico'] . " - R$ " . $servico['preco'] . "</option>";
                 }
             }
         ?>
