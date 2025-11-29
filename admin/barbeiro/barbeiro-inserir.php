@@ -3,9 +3,11 @@
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nome = $_POST["nome"];
+        $senha = $_POST["senha"];
+        $email = $_POST["email"];
         $descricao = $_POST["descricao"];
 
-        $sql = "INSERT INTO barbeiros (nome, descricao) VALUES ('$nome', '$descricao')";
+        $sql = "INSERT INTO barbeiros (nome, senha, email, descricao) VALUES ('$nome', '$senha', '$email', '$descricao')";
         
         $executa = mysqli_query($connect, $sql);
         

@@ -4,10 +4,14 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_POST["id"];
         $nome = $_POST["nome"];
+        $senha = $_POST["senha"];
+        $email = $_POST["email"];
         $descricao = $_POST["descricao"];
 
         $sql = "UPDATE barbeiros SET 
                 nome = '$nome',
+                senha = '$senha',
+                email = '$email',
                 descricao = '$descricao'
                 WHERE id = '$id'";
 

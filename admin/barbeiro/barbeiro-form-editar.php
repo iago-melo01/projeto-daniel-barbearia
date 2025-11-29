@@ -15,6 +15,12 @@
     
     <label>Nome do Barbeiro:</label><br>
     <input type="text" name="nome" value="<?=$barbeiro['nome']?>" required><br><br>
+
+    <label for="email_id">E-mail do barbeiro:</label><br>
+    <input type="email" name="email" id="email_id" value="<?=$barbeiro['email']?>" placeholder="Digite seu e-mail"><br><br>
+
+    <label for="senha_id">Senha:</label><br>
+    <input type="text" name="senha" id="senha_id" value="<?=$barbeiro['senha']?>" placeholder="Cadastre uma senha"><br><br>
     
     <label>Descrição / Especialidade:</label><br>
     <textarea name="descricao" rows="4" cols="50" required><?=$barbeiro['descricao']?></textarea><br><br>

@@ -12,6 +12,7 @@
         <tr>
             <th>ID</th>
             <th>Nome</th>
+            <th>Email</th>
             <th>Descrição</th>
             <th>Ações</th>
         </tr>
@@ -26,6 +27,7 @@
             echo "<tr>";
             echo "<td>" . $dados['id'] . "</td>";
             echo "<td>" . $dados['nome'] . "</td>";
+            echo "<td>" . $dados['email'] . "</td>";
             echo "<td>" . $dados['descricao'] . "</td>";
             echo "<td>
                     <a href='?query=admin/barbeiro/barbeiro-form-editar&id=" . $dados['id'] . "'>Editar</a> |
