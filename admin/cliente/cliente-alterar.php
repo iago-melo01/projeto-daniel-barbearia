@@ -3,30 +3,24 @@
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_POST["id"];
-        $user = $_POST["user"];
         $cliente = $_POST["cliente"];
         $email = $_POST["email"];
         $senha = $_POST["senha"];
-        $idade = $_POST["idade"];
         $telefone = $_POST["telefone"];
 
         // se a senha foi preenchida, atualiza ela tambem
         if(!empty($senha)) {
             $sql = "UPDATE usuarios SET 
-                    user = '$user',
                     cliente = '$cliente',
                     email = '$email',
                     senha = '$senha',
-                    idade = '$idade',
                     telefone = '$telefone'
                     WHERE id = '$id'";
         } else {
             //se nao, mantem a senha atual
             $sql = "UPDATE usuarios SET 
-                    user = '$user',
                     cliente = '$cliente',
                     email = '$email',
-                    idade = '$idade',
                     telefone = '$telefone'
                     WHERE id = '$id'";
         }

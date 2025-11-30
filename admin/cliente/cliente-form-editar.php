@@ -13,9 +13,6 @@
 <form action="?query=admin/cliente/cliente-alterar" method="post">
     <input type="hidden" name="id" value="<?=$cliente['id']?>">
     
-    <label>Nome de Usuário:</label><br>
-    <input type="text" name="user" value="<?=$cliente['user']?>" required><br><br>
-    
     <label>Nome Completo:</label><br>
     <input type="text" name="cliente" value="<?=$cliente['cliente']?>" required><br><br>
     
@@ -24,9 +21,6 @@
     
     <label>Nova Senha (deixe em branco para manter a atual):</label><br>
     <input type="password" name="senha"><br><br>
-    
-    <label>Idade:</label><br>
-    <input type="number" name="idade" value="<?=$cliente['idade']?>" required><br><br>
     
     <label>Telefone:</label><br>
     <input type="text" name="telefone" value="<?=$cliente['telefone']?>" required><br><br>

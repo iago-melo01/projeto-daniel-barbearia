@@ -2,15 +2,13 @@
     require_once(__DIR__ . "/../conectaMYSQL.php");
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $user = $_POST["user"];
         $cliente = $_POST["cliente"];
         $email = $_POST["email"];
         $senha = $_POST["senha"];
-        $idade = $_POST["idade"];
         $telefone = $_POST["telefone"];
 
-        $sql = "INSERT INTO usuarios (user, cliente, email, senha, idade, telefone) 
-                VALUES ('$user', '$cliente', '$email', '$senha', '$idade', '$telefone')";
+        $sql = "INSERT INTO usuarios (cliente, email, senha, telefone) 
+                VALUES ('$cliente', '$email', '$senha', '$telefone')";
         
         $executa = mysqli_query($connect, $sql);
         

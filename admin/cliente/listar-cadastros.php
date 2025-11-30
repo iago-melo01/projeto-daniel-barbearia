@@ -11,10 +11,8 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Usuário</th>
             <th>Nome</th>
             <th>E-mail</th>
-            <th>Idade</th>
             <th>Telefone</th>
             <th>Ações</th>
         </tr>
@@ -28,10 +26,8 @@
         while($dados = mysqli_fetch_array($resultado)) {
             echo "<tr>";
             echo "<td>" . $dados['id'] . "</td>";
-            echo "<td>" . $dados['user'] . "</td>";
             echo "<td>" . $dados['cliente'] . "</td>";
             echo "<td>" . $dados['email'] . "</td>";
-            echo "<td>" . $dados['idade'] . "</td>";
             echo "<td>" . $dados['telefone'] . "</td>";
             echo "<td>
                     <a href='?query=admin/cliente/cliente-form-editar&id=" . $dados['id'] . "'>Editar</a> |
