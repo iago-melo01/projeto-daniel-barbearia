@@ -23,7 +23,7 @@ O projeto tem como objetivo facilitar a administração do negócio e melhorar a
 - **PHP** (versão 8 ou superior)
 - **MySQL** (para o banco de dados)
 - **HTML5 / CSS3 / JavaScript**
-- **Bootstrap 5** (para o front-end)
+
 - **Apache** (servidor local – XAMPP ou WAMP)
 
 ---
