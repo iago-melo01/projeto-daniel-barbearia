@@ -7,6 +7,12 @@
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
+-- =====================================================
+-- Criar banco de dados (se não existir)
+-- =====================================================
+CREATE DATABASE IF NOT EXISTS `barbearia` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `barbearia`;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";

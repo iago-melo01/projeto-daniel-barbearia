@@ -232,7 +232,7 @@
             
             <?php if($mensagem): ?>
                 <div class="alert alert-<?= $tipoMensagem ?>">
-                    <?= htmlspecialchars($mensagem) ?>
+                    <?= ($mensagem) ?>
                 </div>
             <?php endif; ?>
             
@@ -258,7 +258,7 @@
                         <option value="">Selecione um barbeiro</option>
                         <?php
                             if(mysqli_num_rows($barbeiros) > 0) {
-                                while($barbeiro = mysqli_fetch_array($barbeiros)) {//Nao entendi essa parte para selecionar os barbeiros(gabriel ferreira)
+                                while($barbeiro = mysqli_fetch_array($barbeiros)) {
                                     echo "<option value='" . $barbeiro['id'] . "'>" . ($barbeiro['nome']) . "</option>";
                                 }
                             }
@@ -271,7 +271,7 @@
                     <select id="servico" name="servico" required>
                         <option value="">Selecione um serviço</option>
                         <?php
-                            if(mysqli_num_rows($servicos) > 0) {// Não entendi a parte para escolher os serviços também (gabriel ferreira)
+                            if(mysqli_num_rows($servicos) > 0) {
                                 while($servico = mysqli_fetch_array($servicos)) {
                                     echo "<option value='" . ($servico['servico']) . "'>" . 
                                          ($servico['servico']) . " - R$ " . 

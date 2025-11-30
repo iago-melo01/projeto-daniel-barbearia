@@ -232,9 +232,9 @@
 
     .service-image {
     width: 100%;
-    height: 750px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 8px;
+    border-bottom: 3px solid #d4af37;
     display: block;
 }
 
