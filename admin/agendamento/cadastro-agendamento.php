@@ -17,8 +17,8 @@
         <option value="">Selecione um barbeiro</option>
         <?php
             if(mysqli_num_rows($barbeiros) > 0) {
-                while($b = mysqli_fetch_array($barbeiros)) {
-                    echo "<option value='" . $b['id'] . "'>" . $b['nome'] . "</option>";
+                while($barbeiro = mysqli_fetch_array($barbeiros)) {
+                    echo "<option value='" . $barbeiro['id'] . "'>" . $barbeiro['nome'] . "</option>";
                 }
             }
         ?>

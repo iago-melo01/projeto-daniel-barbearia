@@ -1,10 +1,10 @@
 <?php
     if(empty($_SERVER['QUERY_STRING'])){
-        $query = 'conteudo';
+        $query = 'home';
         include_once("$query.php");
     }
     else{
         $query = $_GET['query'];
-            include_once("$query.php");
+        include_once("$query.php");
     }
 ?>
