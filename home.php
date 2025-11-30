@@ -232,9 +232,9 @@
 
     .service-image {
     width: 100%;
-    height: 750px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 8px;
+    border-bottom: 3px solid #d4af37;
     display: block;
 }
 
@@ -321,7 +321,7 @@
                 if(mysqli_num_rows($resultado) > 0) {
                     while($servico = mysqli_fetch_array($resultado)) {
                         echo '<div class="service-card">';
-                        echo '<img src="' . $servico['imagem'] . '" alt="Imagem do serviço" class="service-image">';
+                        echo '<img src="'.$servico['imagem'].'" alt="Imagem do serviço" class="service-image">';
                         echo '<h3>' . ($servico['servico']) . '</h3>';
                         echo '<p>' . ($servico['descricao']) . '</p>';
                         echo '<div class="service-price">R$ ' . number_format($servico['preco'], 2, ',', '.') . '</div>';
