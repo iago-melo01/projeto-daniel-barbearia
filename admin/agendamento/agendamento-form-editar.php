@@ -16,48 +16,259 @@
         $sqlServicos = "SELECT * FROM servicos";
         $servicos = mysqli_query($connect, $sqlServicos);
 ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Agendamento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<h2>Editar Agendamento</h2>
-<form action="?query=admin/agendamento/agendamento-alterar" method="post">
-    <input type="hidden" name="id" value="<?=$agendamento['id']?>">
-    
-    <label>Barbeiro:</label><br>
-    <select name="barbeiro" required>
-        <option value="">Selecione um barbeiro</option>
-        <?php
-            if(mysqli_num_rows($barbeiros) > 0) {
-                while($barbeiro = mysqli_fetch_array($barbeiros)) {
-                    $selected = ($barbeiro['id'] == $agendamento['barbeiro']) ? 'selected' : '';
-                    echo "<option value='" . $barbeiro['id'] . "' $selected>" . $barbeiro['nome'] . "</option>";
-                }
-            }
-        ?>
-    </select><br><br>
-    
-    <label>Serviço:</label><br>
-    <select name="servico" required>
-        <option value="">Selecione um serviço</option>
-        <?php
-            if(mysqli_num_rows($servicos) > 0) {
-                while($s = mysqli_fetch_array($servicos)) {
-                    $selected = ($servico['servico'] == $agendamento['servico']) ? 'selected' : '';
-                    echo "<option value='" . $servico['servico'] . "' $selected>" . $servico['servico'] . " - R$ " . $servico['preco'] . "</option>";
-                }
-            }
-        ?>
-    </select><br><br>
-    
-    <label>Data e Horário:</label><br>
-    <input type="datetime-local" name="horario" value="<?=date('Y-m-d\TH:i', strtotime($agendamento['horario']))?>" required><br><br>
-    
-    <input type="submit" value="Salvar Alterações"><br><br>
-    <a href="?query=admin/agendamento/listar-agendamento">Cancelar</a> | 
-    <a href="?query=admin/agendamento/painel-admin-agendamento">Voltar ao Painel</a>
-</form>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #333;
+        }
 
+        .form-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 30px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            margin: -40px -20px 40px -20px;
+        }
+
+        .form-header h2 {
+            font-size: 32px;
+            color: #d4af37;
+            font-weight: 700;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 26, 46, 0.3);
+        }
+
+        .form-actions {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px solid #e0e0e0;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .form-actions a {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .form-actions a:hover {
+            background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 25px;
+            }
+
+            .form-header h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-header">
+        <h2>Editar Agendamento</h2>
+    </div>
+
+    <div class="form-container">
+        <form action="?query=admin/agendamento/agendamento-alterar" method="post">
+            <input type="hidden" name="id" value="<?=$agendamento['id']?>">
+            
+            <div class="form-group">
+                <label for="barbeiro">Barbeiro:</label>
+                <select name="barbeiro" id="barbeiro" required>
+                    <option value="">Selecione um barbeiro</option>
+                    <?php
+                        if(mysqli_num_rows($barbeiros) > 0) {
+                            while($barbeiro = mysqli_fetch_array($barbeiros)) {
+                                $selected = ($barbeiro['id'] == $agendamento['barbeiro']) ? 'selected' : '';
+                                echo "<option value='" . $barbeiro['id'] . "' $selected>" . htmlspecialchars($barbeiro['nome']) . "</option>";
+                            }
+                        }
+                    ?>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="servico">Serviço:</label>
+                <select name="servico" id="servico" required>
+                    <option value="">Selecione um serviço</option>
+                    <?php
+                        if(mysqli_num_rows($servicos) > 0) {
+                            while($s = mysqli_fetch_array($servicos)) {
+                                $selected = ($s['servico'] == $agendamento['servico']) ? 'selected' : '';
+                                echo "<option value='" . htmlspecialchars($s['servico']) . "' $selected>" . htmlspecialchars($s['servico']) . " - R$ " . number_format($s['preco'], 2, ',', '.') . "</option>";
+                            }
+                        }
+                    ?>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="horario">Data e Horário:</label>
+                <input type="datetime-local" name="horario" id="horario" value="<?=date('Y-m-d\TH:i', strtotime($agendamento['horario']))?>" required>
+            </div>
+            
+            <button type="submit" class="btn-submit">Salvar Alterações</button>
+        </form>
+
+        <div class="form-actions">
+            <a href="?query=admin/agendamento/listar-agendamento">Cancelar</a>
+            <a href="?query=admin/agendamento/painel-admin-agendamento">Voltar ao Painel</a>
+        </div>
+    </div>
+</body>
+</html>
 <?php
     } else {
-        echo "<h2>Agendamento não encontrado!</h2>";
-        echo "<a href='?query=admin/agendamento/listar-agendamento'>Voltar para lista</a>";
+?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento não encontrado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .error-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .error-container h2 {
+            color: #d32f2f;
+            margin-bottom: 20px;
+        }
+
+        .error-container a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .error-container a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 26, 46, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h2>Agendamento não encontrado!</h2>
+        <a href="?query=admin/agendamento/listar-agendamento">Voltar para lista</a>
+    </div>
+</body>
+</html>
+<?php
     }
 ?>
