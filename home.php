@@ -21,7 +21,6 @@
             color: #333;
         }
 
-        /* Header */
         header {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #fff;
@@ -76,7 +75,6 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #fff;
@@ -114,14 +112,12 @@
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
         }
 
-        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 60px 20px;
         }
 
-        /* Seção de Serviços */
         .section-title {
             text-align: center;
             font-size: 36px;
@@ -184,7 +180,6 @@
             background: #16213e;
         }
 
-        /* Footer */
         footer {
             background: #1a1a2e;
             color: #fff;
@@ -192,6 +187,75 @@
             padding: 30px 20px;
             margin-top: 60px;
         }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        padding: 20px 0;
+    }
+
+    .service-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .service-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .service-image {
+    width: 100%;
+    height: 750px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+
+    .service-card h3 {
+        font-size: 22px;
+        font-weight: bold;
+        color: #1a1a2e;
+        margin: 20px 20px 10px 20px;
+    }
+
+    .service-card p {
+        color: #555;
+        margin: 0 20px 15px 20px;
+        line-height: 1.6;
+    }
+
+    .service-price {
+        margin: 0 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #d4af37;
+    }
+
+    .btn-agendar {
+        margin: 20px;
+        padding: 12px;
+        background: #1a1a2e;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-agendar:hover {
+        background: #16213e;
+        transform: translateY(-2px);
+    }
+
 
         @media (max-width: 768px) {
             .header-container {
@@ -237,6 +301,7 @@
                 if(mysqli_num_rows($resultado) > 0) {
                     while($servico = mysqli_fetch_array($resultado)) {
                         echo '<div class="service-card">';
+                        echo '<img src="' . $servico['imagem'] . '" alt="Imagem do serviço" class="service-image">';
                         echo '<h3>' . ($servico['servico']) . '</h3>';
                         echo '<p>' . ($servico['descricao']) . '</p>';
                         echo '<div class="service-price">R$ ' . number_format($servico['preco'], 2, ',', '.') . '</div>';
