@@ -106,6 +106,26 @@
             transition: all 0.3s ease;
         }
 
+        .veja-mais-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-cta1 {
+            display: block;
+            background: #d4af37;
+            color: #1a1a2e;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 300px;
+            margin-left: 430px;
+        }
+
         .btn-cta:hover {
             background: #f4d03f;
             transform: translateY(-2px);
@@ -295,7 +315,7 @@
         <h2 class="section-title">Nossos Serviços</h2>
         <div class="services-grid">
             <?php
-                $sql = "SELECT * FROM servicos LIMIT 6";
+                $sql = "SELECT * FROM servicos LIMIT 3";
                 $resultado = mysqli_query($connect, $sql);
 
                 if(mysqli_num_rows($resultado) > 0) {
@@ -307,7 +327,10 @@
                         echo '<div class="service-price">R$ ' . number_format($servico['preco'], 2, ',', '.') . '</div>';
                         echo '<a href="?query=agendar" class="btn-agendar">Agendar</a>';
                         echo '</div>';
+                        
                     }
+                echo '<a href="?query=servicos" class="btn-cta1">Veja mais</a>';
+
                 } else {
                     echo '<p style="grid-column: 1/-1; text-align: center; color: #666;">Nenhum serviço disponível no momento.</p>';
                 }
