@@ -219,17 +219,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">✂️ Barbearia</div>
-            <nav class="nav-links">
-                <a href="?query=home">Início</a>
-                <a href="?query=servicos">Serviços</a>
-                <a href="?query=agendar">Agendar</a>
-                <a href="?query=login-barbeiro" class="btn-login">Área do Barbeiro</a>
-            </nav>
-        </div>
-    </header>
+    <?php include_once 'topo.php' ?>
 
     <section class="hero">
         <h1>Bem-vindo à Nossa Barbearia</h1>

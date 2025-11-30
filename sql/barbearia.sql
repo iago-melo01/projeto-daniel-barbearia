@@ -65,6 +65,7 @@ CREATE TABLE `agendamento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome_cliente` varchar(50) NOT NULL,
   `email_cliente` varchar(100) NOT NULL,
+  `telefone_cliente` varchar(13) NOT NULL,
   `barbeiro` int(11) NOT NULL,
   `servico` varchar(100) NOT NULL,
   `horario` datetime NOT NULL,
@@ -115,17 +116,17 @@ INSERT INTO `usuarios` (`cliente`, `email`, `senha`, `telefone`) VALUES
 -- =====================================================
 -- Inserir AGENDAMENTOS
 -- =====================================================
-INSERT INTO `agendamento` (`nome_cliente`, `email_cliente`, `barbeiro`, `servico`, `horario`) VALUES
-('Lucas Ferreira', 'lucas.ferreira@email.com', 1, 'Corte Masculino', '2025-01-15 10:00:00'),
-('Marcos Almeida', 'marcos.almeida@email.com', 2, 'Corte + Barba', '2025-01-15 11:00:00'),
-('Bruno Rodrigues', 'bruno.rodrigues@email.com', 1, 'Corte Degradê', '2025-01-15 14:00:00'),
-('Felipe Souza', 'felipe.souza@email.com', 3, 'Barba Completa', '2025-01-16 09:00:00'),
-('Ricardo Lima', 'ricardo.lima@email.com', 2, 'Corte + Sobrancelha', '2025-01-16 10:30:00'),
-('André Martins', 'andre.martins@email.com', 4, 'Corte Masculino', '2025-01-16 15:00:00'),
-('Thiago Pereira', 'thiago.pereira@email.com', 1, 'Corte + Barba', '2025-01-17 11:00:00'),
-('Gustavo Rocha', 'gustavo.rocha@email.com', 3, 'Corte Social', '2025-01-17 16:00:00'),
-('Lucas Ferreira', 'lucas.ferreira@email.com', 2, 'Relaxamento Capilar', '2025-01-18 10:00:00'),
-('Marcos Almeida', 'marcos.almeida@email.com', 4, 'Barba + Bigode', '2025-01-18 14:30:00');
+INSERT INTO `agendamento` (`nome_cliente`, `email_cliente`,`telefone_cliente`, `barbeiro`, `servico`, `horario`) VALUES
+('Lucas Ferreira', 'lucas.ferreira@email.com','83 9653-4944' ,1, 'Corte Masculino', '2025-01-15 10:00:00'),
+('Marcos Almeida', 'marcos.almeida@email.com','83 9653-4944',2, 'Corte + Barba', '2025-01-15 11:00:00'),
+('Bruno Rodrigues', 'bruno.rodrigues@email.com','83 9653-4944' ,1, 'Corte Degradê', '2025-01-15 14:00:00'),
+('Felipe Souza', 'felipe.souza@email.com','83 9653-4944' ,3, 'Barba Completa', '2025-01-16 09:00:00'),
+('Ricardo Lima', 'ricardo.lima@email.com','83 9653-4944' ,2, 'Corte + Sobrancelha', '2025-01-16 10:30:00'),
+('André Martins', 'andre.martins@email.com','83 9653-4944' ,4, 'Corte Masculino', '2025-01-16 15:00:00'),
+('Thiago Pereira', 'thiago.pereira@email.com','83 9653-4944' ,1, 'Corte + Barba', '2025-01-17 11:00:00'),
+('Gustavo Rocha', 'gustavo.rocha@email.com','83 9653-4944' ,3, 'Corte Social', '2025-01-17 16:00:00'),
+('Lucas Ferreira', 'lucas.ferreira@email.com','83 9653-4944' ,2, 'Relaxamento Capilar', '2025-01-18 10:00:00'),
+('Marcos Almeida', 'marcos.almeida@email.com','83 9653-4944' ,4, 'Barba + Bigode', '2025-01-18 14:30:00');
 
 COMMIT;
 

@@ -7,12 +7,13 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nome_cliente = $_POST['nome_cliente'];
         $email_cliente = $_POST['email_cliente'];
+        $telefone_cliente = $_POST['telefone_cliente'];
         $barbeiro = $_POST['barbeiro'];
         $servico = $_POST['servico'];
         $horario = $_POST['horario'];
         
-        $sql = "INSERT INTO agendamento (nome_cliente, email_cliente, barbeiro, servico, horario) 
-                VALUES ('$nome_cliente', '$email_cliente', '$barbeiro', '$servico', '$horario')";
+        $sql = "INSERT INTO agendamento (nome_cliente, email_cliente, telefone_cliente, barbeiro, servico, horario) 
+                VALUES ('$nome_cliente', '$email_cliente','$telefone_cliente','$barbeiro', '$servico', '$horario')";
         
         $resultado = mysqli_query($connect, $sql);
         
@@ -224,18 +225,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">✂️ Barbearia</div>
-            <nav class="nav-links">
-                <a href="?query=home">Início</a>
-                <a href="?query=servicos">Serviços</a>
-                <a href="?query=agendar">Agendar</a>
-                <a href="?query=login-barbeiro" class="btn-login">Área do Barbeiro</a>
-            </nav>
-        </div>
-    </header>
-
+    <?php include_once 'topo.php'?>
     <div class="container">
         <div class="form-container">
             <h2 class="form-title">Agendar Horário</h2>
@@ -256,14 +246,19 @@
                     <label for="email_cliente">Seu E-mail</label>
                     <input type="email" id="email_cliente" name="email_cliente" required placeholder="seu.email@exemplo.com">
                 </div>
+
+                <div class="form-group">
+                    <label for="telefone_cliente">Seu Telefone</label>
+                    <input type="text" id="telefone_cliente" name="telefone_cliente" required placeholder="83 99999-9999">
+                </div>
                 
                 <div class="form-group">
                     <label for="barbeiro">Escolha o Barbeiro</label>
-                    <select id="barbeiro" name="barbeiro" required>
+                    <select id="barbeiro" name="barbeiro" required> 
                         <option value="">Selecione um barbeiro</option>
                         <?php
                             if(mysqli_num_rows($barbeiros) > 0) {
-                                while($barbeiro = mysqli_fetch_array($barbeiros)) {
+                                while($barbeiro = mysqli_fetch_array($barbeiros)) {//Nao entendi essa parte para selecionar os barbeiros(gabriel ferreira)
                                     echo "<option value='" . $barbeiro['id'] . "'>" . ($barbeiro['nome']) . "</option>";
                                 }
                             }
@@ -276,7 +271,7 @@
                     <select id="servico" name="servico" required>
                         <option value="">Selecione um serviço</option>
                         <?php
-                            if(mysqli_num_rows($servicos) > 0) {
+                            if(mysqli_num_rows($servicos) > 0) {// Não entendi a parte para escolher os serviços também (gabriel ferreira)
                                 while($servico = mysqli_fetch_array($servicos)) {
                                     echo "<option value='" . ($servico['servico']) . "'>" . 
                                          ($servico['servico']) . " - R$ " . 
