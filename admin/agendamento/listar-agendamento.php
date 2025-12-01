@@ -178,6 +178,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Cliente</th>
                     <th>Barbeiro</th>
                     <th>Serviço</th>
                     <th>Data/Horário</th>
@@ -197,6 +198,7 @@
                 while($dados = mysqli_fetch_array($resultado)) {
                     echo "<tr>";
                     echo "<td>" . $dados['id'] . "</td>";
+                    echo "<td>" . $dados['nome_cliente'] . "</td>";
                     echo "<td>" . htmlspecialchars($dados['nome_barbeiro'] ? $dados['nome_barbeiro'] : 'Barbeiro #' . $dados['barbeiro']) . "</td>";
                     echo "<td>" . htmlspecialchars($dados['servico']) . "</td>";
                     echo "<td>" . date('d/m/Y H:i', strtotime($dados['horario'])) . "</td>";

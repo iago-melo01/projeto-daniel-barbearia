@@ -118,7 +118,6 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `cliente` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `senha` varchar(50) NOT NULL,
   `telefone` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -126,15 +125,9 @@ CREATE TABLE `usuarios` (
 -- Despejando dados para a tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `cliente`, `email`, `senha`, `telefone`) VALUES
-(1, 'Lucas Ferreira', 'lucas.ferreira@email.com', 'senha123', '11987654321'),
-(2, 'Marcos Almeida', 'marcos.almeida@email.com', 'senha123', '11976543210'),
-(3, 'Bruno Rodrigues', 'bruno.rodrigues@email.com', 'senha123', '11965432109'),
-(4, 'Felipe Souza', 'felipe.souza@email.com', 'senha123', '11954321098'),
-(5, 'Ricardo Lima', 'ricardo.lima@email.com', 'senha123', '11943210987'),
-(6, 'André Martins', 'andre.martins@email.com', 'senha123', '11932109876'),
-(7, 'Thiago Pereira', 'thiago.pereira@email.com', 'senha123', '11921098765'),
-(8, 'Gustavo Rocha', 'gustavo.rocha@email.com', 'senha123', '11910987654');
+INSERT INTO `usuarios` (`id`, `cliente`, `email`, `telefone`) VALUES
+(1, 'Lucas Ferreira', 'lucas.ferreira@email.com','11987654321'),
+(2, 'Marcos Almeida', 'marcos.almeida@email.com','11976543210');
 
 --
 -- Índices para tabelas despejadas

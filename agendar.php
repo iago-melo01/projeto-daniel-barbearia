@@ -1,8 +1,10 @@
 <?php
     require_once("admin/conectaMYSQL.php");
     
-    $mensagem = '';
-    $tipoMensagem = '';
+    $mensagem_agendamento = '';
+    $tipoMensagem_agendamento = '';
+    $mensagem_cliente = '';
+    $tipoMensagem_cliente = '';
     
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nome_cliente = $_POST['nome_cliente'];
@@ -12,25 +14,50 @@
         $servico = $_POST['servico'];
         $horario = $_POST['horario'];
         
-        $sql = "INSERT INTO agendamento (nome_cliente, email_cliente, telefone_cliente, barbeiro, servico, horario) 
+        // Cadastro de um Agendamento
+        $sql_agendamento = "INSERT INTO agendamento (nome_cliente, email_cliente, telefone_cliente, barbeiro, servico, horario) 
                 VALUES ('$nome_cliente', '$email_cliente','$telefone_cliente','$barbeiro', '$servico', '$horario')";
         
-        $resultado = mysqli_query($connect, $sql);
+        $resultado = mysqli_query($connect, $sql_agendamento);
         
         if($resultado) { // se o mysqli_query retornar true executa o codigo abaixo
-            $mensagem = 'Agendamento realizado com sucesso!';
-            $tipoMensagem = 'success';
+            $mensagem_agendamento = 'Agendamento realizado com sucesso!';
+            $tipoMensagem_agendamento = 'success';
         } else { // se retornar falso retorna isso aq
-            $mensagem = 'Erro ao realizar agendamento. Tente novamente.';
-            $tipoMensagem = 'error';
+            $mensagem_agendamento = 'Erro ao realizar agendamento. Tente novamente.';
+            $tipoMensagem_agendamento = 'error';
         }
+
+        // Cadastro de cliente se não houver cadastro
+        $sql_cliente = "SELECT * FROM usuarios WHERE email = '$email_cliente'";
+
+        // Busca se existe clientes com o email igual ao $email_cliente e retorna os resultados encontrados
+        $pesquisa_cliente = mysqli_query($connect,$sql_cliente);
+        if (mysqli_num_rows($pesquisa_cliente) == 0){// Se a pesquisa retornar 0 linhas o cliente será cadastrado com as informações fornecidas
+
+            $sql_clientenovo = "INSERT INTO usuarios (cliente, email, telefone) 
+                                VALUES ('$nome_cliente','$email_cliente','$telefone_cliente')"; 
+        
+            $resultado_cliente = mysqli_query($connect,$sql_clientenovo);
+            
+            //Se não retornar um erro o cliente vai ser cadastrado e irá salvar uma mensagem_cliente com tipo_cliente sucess ou tipo_cliente error se a query retornar erro
+            if (isset($resultado_cliente)){
+                $mensagem_cliente = 'Cliente Cadastrado com sucesso';
+                $tipoMensagem_cliente = 'sucess';
+            }
+            else{
+                $mensagem_cliente = 'Não foi possível cadastrar o cliente.';
+                $tipoMensagem_cliente = 'error';
+            }
+        }
+
     }
     
-    // buscar barbeiros
+    // buscar barbeiros para o form
     $sqlBarbeiros = "SELECT * FROM barbeiros";
     $barbeiros = mysqli_query($connect, $sqlBarbeiros);
     
-    // buscar servicos
+    // buscar servicos para o form
     $sqlServicos = "SELECT * FROM servicos";
     $servicos = mysqli_query($connect, $sqlServicos);
 ?>
@@ -230,11 +257,20 @@
         <div class="form-container">
             <h2 class="form-title">Agendar Horário</h2>
             
-            <?php if($mensagem): ?>
+            <?php if($mensagem_agendamento){
+                ?>
                 <div class="alert alert-<?= $tipoMensagem ?>">
-                    <?= ($mensagem) ?>
+                    <?= ($mensagem_agendamento) ?>
                 </div>
-            <?php endif; ?>
+                <?php
+            }else if($mensagem_cliente){
+                ?>
+                <div class="alert alert-<?= $tipoMensagem_cliente ?>">
+                    <?= ($mensagem_cliente) ?>
+                </div>
+                <?php
+            }
+            ?>
             
             <form method="POST" action="?query=agendar">
                 <div class="form-group">
