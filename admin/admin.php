@@ -1,8 +1,7 @@
 <?php 
-    session_start(); //inicia a sessão 
+    session_start();
     require_once("conectaMYSQL.php");
-    
-    //verifica se foi enviado via POST 
+     
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['email'];
         $senha = $_POST['senha'];
@@ -12,17 +11,15 @@
         if(mysqli_num_rows($resultado) > 0){
             $barbeiro = mysqli_fetch_array($resultado);
             
-            // salvar dados na sessão
             $_SESSION['admin_logado'] = true;
             $_SESSION['admin_id'] = $barbeiro['id'];
             $_SESSION['admin_nome'] = $barbeiro['nome'];
             $_SESSION['admin_email'] = $barbeiro['email'];
             
-            // redireciona pra evitar reenvio do formulário
             header("Location: ?query=admin/admin");
             exit;
         } else {
-            // login falhou, mostra erro
+
             ?>
             <!DOCTYPE html>
             <html lang="pt-BR">
@@ -88,9 +85,9 @@
             <?php
         }
     } 
-    // verificar se esta logado via sessao
+
     elseif(isset($_SESSION['admin_logado']) && $_SESSION['admin_logado'] === true) {
-        // usuario esta logado - mostrar painel
+
         $barbeiro = [
             'id' => $_SESSION['admin_id'],
             'nome' => $_SESSION['admin_nome'],
@@ -304,7 +301,6 @@
         </html>
         <?php
     } else {
-        // nao ta logado e nao foi POST -> acesso negado
         ?>
         <!DOCTYPE html>
         <html lang="pt-BR">
