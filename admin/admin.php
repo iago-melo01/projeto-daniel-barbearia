@@ -291,6 +291,12 @@
                         <p>Controle todos os agendamentos realizados</p>
                         <a href="?query=admin/agendamento/painel-admin-agendamento">Gerenciar Agendamentos</a>
                     </div>
+                    <div class="admin-card">
+                        <span class="admin-card-icon">💬</span>
+                        <h3>Fale Conosco</h3>
+                        <p>Gerencie todas as mensagens recebidas</p>
+                        <a href="?query=admin/faleconosco/painel-admin-faleconosco">Gerenciar Mensagens</a>
+                    </div>
                 </div>
 
                 <div class="logout-section">
