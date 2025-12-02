@@ -104,6 +104,22 @@
             padding: 30px 20px;
             margin-top: 60px;
         }
+
+        .btn-login {
+            background: #d4af37;
+            color: #1a1a2e;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background: #f4d03f;
+            transform: translateY(-2px);
+        }
+
     </style>
 </head>
 <body>

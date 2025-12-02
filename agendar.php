@@ -285,7 +285,7 @@
 
                 <div class="form-group">
                     <label for="telefone_cliente">Seu Telefone</label>
-                    <input type="text" id="telefone_cliente" name="telefone_cliente" required placeholder="83 99999-9999">
+                    <input type="text" id="telefone_cliente" name="telefone_cliente" required placeholder="83 99999-9999" maxlength="11">
                 </div>
                 
                 <div class="form-group">
