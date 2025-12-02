@@ -60,6 +60,18 @@ INSERT INTO `agendamento` (`id`, `nome_cliente`, `email_cliente`, `telefone_clie
 (10, 'Marcos Almeida', 'marcos.almeida@email.com', '83 9653-4944', 4, 'Barba + Bigode', '2025-01-18 14:30:00');
 
 -- --------------------------------------------------------
+CREATE TABLE `fale_conosco` (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    telefone VARCHAR(20),
+    assunto VARCHAR(150) NOT NULL,
+    mensagem TEXT NOT NULL,
+    status ENUM('novo','lido','respondido') DEFAULT 'novo',
+    resposta TEXT,
+    data_envio DATETIME DEFAULT CURRENT_TIMESTAMP,
+    data_resposta DATETIME
+);
 
 --
 -- Estrutura para tabela `barbeiros`
