@@ -1,6 +1,6 @@
 <header>
         <div class="header-container">
-            <div class="logo">✂️ Barbearia</div>
+            <div class="logo">Barbearia Paladinos</div>
             <nav class="nav-links">
                 <a href="?query=home">Início</a>
                 <a href="?query=servicos">Serviços</a>

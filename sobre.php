@@ -127,7 +127,7 @@
 <?php include_once 'topo.php' ?>
 
 <section class="hero">
-    <h1>Nossa Barbearia</h1>
+    <h1>Barbearia Paladinos</h1>
     <p>Tradição, estilo e excelência em cada detalhe</p>
 </section>
 
@@ -136,7 +136,7 @@
 
     <div class="sobre-texto">
         <p>
-            A <strong>Barbearia Clássica</strong> nasceu com um propósito simples: oferecer muito mais do que um corte de cabelo. 
+            A <strong>Barbearia Paladinos</strong> nasceu com um propósito simples: oferecer muito mais do que um corte de cabelo. 
             Criamos um espaço onde tradição e modernidade se unem para proporcionar uma experiência única, confortável e inesquecível.
         </p>
 

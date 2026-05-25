@@ -306,7 +306,7 @@
     <?php include_once 'topo.php' ?>
 
     <section class="hero">
-        <h1>Bem-vindo à Nossa Barbearia</h1>
+        <h1>Bem-vindo à Barbearia Paladinos</h1>
         <p>Estilo, tradição e qualidade em cada corte</p>
         <a href="?query=agendar" class="btn-cta">Agendar Agora</a>
     </section>
