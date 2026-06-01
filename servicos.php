@@ -1,268 +1,51 @@
 <?php
     require_once("admin/conectaMYSQL.php");
+    require_once __DIR__ . '/includes/barbearia-paladinos.php';
+    $catalogoServicos = obterCatalogoServicosPaladinos();
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços - Barbearia</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f5f5;
-            color: #333;
-        }
-
-        header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #fff;
-            padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: #d4af37;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #d4af37;
-        }
-
-        .btn-login {
-            background: #d4af37;
-            color: #1a1a2e;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-login:hover {
-            background: #f4d03f;
-            transform: translateY(-2px);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
-            color: #1a1a2e;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: #fff;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .service-card h3 {
-            color: #1a1a2e;
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
-
-        .service-card p {
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .service-price {
-            font-size: 28px;
-            font-weight: 700;
-            color: #d4af37;
-            margin-bottom: 20px;
-        }
-
-        .btn-agendar {
-            display: block;
-            text-align: center;
-            background: #1a1a2e;
-            color: #fff;
-            padding: 14px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-agendar:hover {
-            background: #16213e;
-        }
-
-        footer {
-            background: #1a1a2e;
-            color: #fff;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 20px 0;
-            }
-
-        .service-card {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .service-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 3px solid #d4af37;
-        }
-
-        .service-card h3 {
-            font-size: 22px;
-            font-weight: bold;
-            color: #1a1a2e;
-            margin: 20px 20px 10px 20px;
-        }
-
-        .service-card p {
-            color: #555;
-            margin: 0 20px 15px 20px;
-            line-height: 1.6;
-        }
-
-        .service-price {
-            margin: 0 20px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #d4af37;
-        }
-
-        .btn-agendar {
-            margin: 20px;
-            padding: 12px;
-            background: #1a1a2e;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-agendar:hover {
-            background: #16213e;
-            transform: translateY(-2px);
-        }
-
-
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Serviços - <?= htmlspecialchars(NOME_BARBEARIA) ?></title>
+    <?php include_once __DIR__ . '/includes/layout-head.php'; ?>
 </head>
 <body>
-    <?php include_once 'topo.php' ?>
-    <div class="container">
+    <?php include_once 'topo.php'; ?>
+    <div class="page-container">
         <h2 class="section-title">Todos os Nossos Serviços</h2>
         <div class="services-grid">
             <?php
                 $sql = "SELECT * FROM servicos";
                 $resultado = mysqli_query($connect, $sql);
+                $exibidos = 0;
 
-                if(mysqli_num_rows($resultado) > 0) {
-                    while($servico = mysqli_fetch_array($resultado)) {
+                if (mysqli_num_rows($resultado) > 0) {
+                    while ($servico = mysqli_fetch_array($resultado)) {
+                        $nome = $servico['servico'];
+                        if (!isset($catalogoServicos[$nome])) {
+                            continue;
+                        }
+                        $exibidos++;
+                        $info = $catalogoServicos[$nome];
                         echo '<div class="service-card">';
-                        echo '<img src="' . $servico['imagem'] . '" alt="Imagem do serviço" class="service-image">';
-                        echo '<h3>' . ($servico['servico']) . '</h3>';
-                        echo '<p>' . ($servico['descricao']) . '</p>';
-                        echo '<div class="service-price">R$ ' . number_format($servico['preco'], 2, ',', '.') . '</div>';
+                        echo '<img src="' . htmlspecialchars($servico['imagem']) . '" alt="' . htmlspecialchars($nome) . '" class="service-image">';
+                        echo '<h3>' . htmlspecialchars($nome) . '</h3>';
+                        echo '<p>' . htmlspecialchars($servico['descricao']) . '</p>';
+                        echo '<p style="padding:0 20px;color:var(--pal-texto-suave);font-size:0.9rem;">Duração: ' . (int) $info['duracao'] . ' min</p>';
+                        echo '<div class="service-price">R$ ' . number_format($info['preco'], 2, ',', '.') . '</div>';
                         echo '<a href="?query=agendar" class="btn-agendar">Agendar Este Serviço</a>';
                         echo '</div>';
                     }
-                } else {
-                    echo '<p style="grid-column: 1/-1; text-align: center; color: #666; padding: 40px;">Nenhum serviço disponível no momento.</p>';
+                }
+
+                if ($exibidos === 0) {
+                    echo '<p style="grid-column:1/-1;text-align:center;color:var(--pal-texto-suave);padding:40px;">Nenhum serviço disponível no momento.</p>';
                 }
             ?>
         </div>
     </div>
-
-    <footer>
-        <p>&copy; 2025 Barbearia. Todos os direitos reservados.</p>
-    </footer>
+    <?php include_once __DIR__ . '/includes/rodape.php'; ?>
 </body>
 </html>
-

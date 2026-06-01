@@ -1,0 +1,506 @@
+/* Painel Admin — Barbearia Paladinos */
+body.admin-body {
+    background: var(--pal-fundo);
+    color: var(--pal-texto);
+    min-height: 100vh;
+}
+
+body.admin-body--centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+/* Topbar */
+.admin-topbar {
+    background: var(--pal-preto);
+    border-bottom: 1px solid var(--pal-borda);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.admin-topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.admin-topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.admin-logo-link {
+    flex-shrink: 0;
+}
+
+.admin-logo-img {
+    height: 48px;
+    width: auto;
+    max-width: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.3));
+}
+
+.admin-topbar-title {
+    font-family: var(--font-gotica);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--pal-laranja);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.admin-topbar-sub {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: var(--pal-texto-suave);
+}
+
+.admin-topbar-sub .welcome-name {
+    color: var(--pal-laranja-claro);
+    font-weight: 600;
+}
+
+.admin-topbar-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Botões admin */
+.admin-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: var(--raio-sm);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: center;
+}
+
+.admin-btn-primary,
+.admin-card a,
+.message-links a,
+.admin-message-links .admin-btn-primary {
+    background: linear-gradient(180deg, var(--pal-laranja-claro), var(--pal-laranja));
+    color: var(--pal-preto) !important;
+    border-color: var(--pal-laranja);
+}
+
+.admin-btn-primary:hover,
+.admin-card a:hover {
+    box-shadow: var(--pal-glow-forte);
+    transform: translateY(-2px);
+}
+
+.admin-btn-secondary,
+.btn-back,
+.list-actions a,
+.form-actions a {
+    background: transparent;
+    color: var(--pal-laranja) !important;
+    border-color: var(--pal-borda);
+}
+
+.admin-btn-secondary:hover,
+.btn-back:hover,
+.list-actions a:hover,
+.form-actions a:hover {
+    background: rgba(255, 140, 0, 0.1);
+    box-shadow: var(--pal-glow);
+}
+
+.admin-btn-outline,
+.btn-logout {
+    background: transparent;
+    color: var(--pal-texto-suave) !important;
+    border-color: var(--pal-borda-suave);
+}
+
+.admin-btn-outline:hover,
+.btn-logout:hover {
+    color: var(--pal-laranja) !important;
+    border-color: var(--pal-laranja);
+}
+
+.admin-btn-danger,
+.btn-delete {
+    background: rgba(200, 50, 50, 0.25) !important;
+    color: #ff9999 !important;
+    border-color: rgba(220, 80, 80, 0.5) !important;
+}
+
+.admin-btn-danger:hover,
+.btn-delete:hover {
+    background: rgba(200, 50, 50, 0.45) !important;
+}
+
+.btn-edit,
+.admin-btn-edit {
+    background: var(--pal-preto) !important;
+    color: var(--pal-laranja) !important;
+    border: 1px solid var(--pal-borda) !important;
+}
+
+.btn-edit:hover {
+    box-shadow: var(--pal-glow);
+}
+
+/* Main */
+.admin-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+}
+
+.admin-main--narrow {
+    max-width: 640px;
+}
+
+/* Compatibilidade: headers antigos (ocultos se topbar usada) */
+.admin-header,
+.list-header,
+.form-header {
+    display: none;
+}
+
+/* Grid de cards do painel */
+.admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.admin-card {
+    background: var(--pal-card);
+    border: 1px solid var(--pal-borda-suave);
+    border-radius: var(--raio);
+    padding: 28px 24px;
+    text-align: center;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--pal-laranja), transparent);
+}
+
+.admin-card:hover {
+    border-color: var(--pal-borda);
+    box-shadow: var(--pal-glow);
+    transform: translateY(-4px);
+}
+
+.admin-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.admin-card h3 {
+    color: var(--pal-laranja);
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.admin-card p {
+    color: var(--pal-texto-suave);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.admin-card a {
+    padding: 10px 22px;
+    font-size: 0.75rem;
+}
+
+.logout-section,
+.back-section,
+.admin-footer-nav {
+    text-align: center;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--pal-borda-suave);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* Tabelas */
+.table-container {
+    background: var(--pal-card);
+    border: 1px solid var(--pal-borda-suave);
+    border-radius: var(--raio);
+    padding: 24px;
+    overflow-x: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.admin-table,
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table thead,
+.table-container thead {
+    background: var(--pal-preto);
+}
+
+.admin-table thead th,
+.table-container thead th {
+    padding: 14px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--pal-laranja);
+    border-bottom: 1px solid var(--pal-borda);
+}
+
+.admin-table tbody tr,
+.table-container tbody tr {
+    border-bottom: 1px solid var(--pal-borda-suave);
+    transition: background 0.2s;
+}
+
+.admin-table tbody tr:hover,
+.table-container tbody tr:hover {
+    background: rgba(255, 140, 0, 0.05);
+}
+
+.admin-table tbody td,
+.table-container tbody td {
+    padding: 14px 12px;
+    font-size: 0.9rem;
+    color: var(--pal-texto);
+}
+
+.actions-cell {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 40px;
+    color: var(--pal-texto-suave);
+}
+
+/* Formulários admin */
+.form-container {
+    background: var(--pal-card);
+    border: 1px solid var(--pal-borda-suave);
+    border-radius: var(--raio);
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.form-container .form-group label {
+    color: var(--pal-branco);
+}
+
+.form-container .btn-submit {
+    margin-top: 8px;
+}
+
+.form-actions {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--pal-borda-suave);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* Mensagens (resultado de ações) */
+.admin-message-box,
+.message-container {
+    background: var(--pal-card);
+    border: 1px solid var(--pal-borda-suave);
+    border-radius: var(--raio);
+    padding: 40px 32px;
+    text-align: center;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+.admin-message-box--success,
+.message-container.success {
+    border-color: var(--pal-borda);
+}
+
+.admin-message-box--error,
+.message-container.error {
+    border-color: rgba(220, 80, 80, 0.45);
+}
+
+.admin-message-icon,
+.message-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    color: var(--pal-laranja);
+}
+
+.admin-message-box--error .admin-message-icon,
+.message-container.error .message-icon {
+    color: #f08080;
+}
+
+.admin-message-box h2,
+.message-container h2 {
+    font-family: var(--font-gotica);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--pal-laranja);
+    margin-bottom: 12px;
+}
+
+.admin-message-box p {
+    color: var(--pal-texto-suave);
+    margin-bottom: 8px;
+}
+
+.admin-message-links,
+.message-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+/* Status badges fale conosco etc */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-novo {
+    background: rgba(255, 140, 0, 0.2);
+    color: var(--pal-laranja-claro);
+}
+
+.badge-lido {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--pal-texto-suave);
+}
+
+/* Detalhe (fale conosco) */
+.admin-detail-box,
+.info-box {
+    background: var(--pal-preto);
+    border: 1px solid var(--pal-borda-suave);
+    border-left: 3px solid var(--pal-laranja);
+    border-radius: var(--raio-sm);
+    padding: 20px 22px;
+    line-height: 1.7;
+}
+
+.admin-detail-box p,
+.info-box p {
+    margin-bottom: 10px;
+    color: var(--pal-texto-suave);
+}
+
+.admin-detail-box strong,
+.info-box strong {
+    color: var(--pal-branco);
+}
+
+.admin-detail-box hr {
+    border: none;
+    border-top: 1px solid var(--pal-borda-suave);
+    margin: 20px 0;
+}
+
+/* Legado: telas de erro sem layout */
+.error-container {
+    background: var(--pal-card);
+    border: 1px solid var(--pal-borda-suave);
+    border-radius: var(--raio);
+    padding: 40px 32px;
+    text-align: center;
+    max-width: 440px;
+}
+
+.error-container .btn-retry {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: linear-gradient(180deg, var(--pal-laranja-claro), var(--pal-laranja));
+    color: var(--pal-preto) !important;
+    text-decoration: none;
+    border-radius: var(--raio-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.admin-container {
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .admin-topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-topbar-actions {
+        width: 100%;
+    }
+
+    .admin-topbar-actions .admin-btn {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-container {
+        padding: 22px 18px;
+    }
+}

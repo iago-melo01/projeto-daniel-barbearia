@@ -114,11 +114,9 @@ CREATE TABLE `servicos` (
 --
 
 INSERT INTO `servicos` (`id`, `servico`, `descricao`, `preco`, `imagem`) VALUES
-(1, 'Corte Masculino', 'Corte de cabelo masculino com tesoura e máquina. Inclui acabamento e penteado.', 35.00, 'https://pvbeauty.com.br/wp-content/uploads/2024/08/corte-de-cabelo-moicano-masculino-pv-beauty-17.webp'),
+(1, 'Corte Masculino', 'Corte de cabelo masculino com tesoura e máquina. Inclui acabamento e penteado.', 30.00, 'https://pvbeauty.com.br/wp-content/uploads/2024/08/corte-de-cabelo-moicano-masculino-pv-beauty-17.webp'),
 (2, 'Corte + Barba', 'Corte de cabelo completo + barba aparada e desenhada. Serviço completo.', 50.00, 'https://i.pinimg.com/564x/3f/25/d4/3f25d444ea12db44d013335b4ce585aa.jpg'),
-(3, 'Barba Completa', 'Aparar, desenhar e modelar a barba. Inclui tratamento com produtos.', 25.00, 'https://img.freepik.com/fotos-gratis/jovem-arrumando-a-barba-no-barbeiro_23-2148985728.jpg?semt=ais_hybrid&w=740&q=80'),
-(4, 'Corte + Sobrancelha', 'Corte de cabelo + design de sobrancelhas. Look completo e harmonioso.', 45.00, 'https://siterg.uol.com.br/wp-content/uploads/2020/09/1000-1000-4sobrancelha-divulgacao-1000x600.jpg'),
-(5, 'Relaxamento Capilar', 'Tratamento relaxante para o couro cabeludo. Massagem e produtos especiais.', 30.00, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbDdhkbMH7h8A9r1WjgRJRTBzohd3k0xQAWw&s');
+(4, 'Corte + Sobrancelha', 'Corte de cabelo + design de sobrancelhas. Look completo e harmonioso.', 45.00, 'https://siterg.uol.com.br/wp-content/uploads/2020/09/1000-1000-4sobrancelha-divulgacao-1000x600.jpg');
 
 -- --------------------------------------------------------
 

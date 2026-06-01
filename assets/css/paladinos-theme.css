@@ -1,0 +1,612 @@
+/* Tema Barbearia Paladinos — identidade visual da logo */
+:root {
+    --pal-preto: #000000;
+    --pal-fundo: #0a0a0a;
+    --pal-card: #141414;
+    --pal-card-hover: #1c1c1c;
+    --pal-laranja: #ff8c00;
+    --pal-laranja-claro: #ffa733;
+    --pal-laranja-escuro: #e67e00;
+    --pal-branco: #ffffff;
+    --pal-texto: #e8e8e8;
+    --pal-texto-suave: #a8a8a8;
+    --pal-borda: rgba(255, 140, 0, 0.35);
+    --pal-borda-suave: rgba(255, 255, 255, 0.08);
+    --pal-glow: 0 0 20px rgba(255, 140, 0, 0.35);
+    --pal-glow-forte: 0 0 28px rgba(255, 140, 0, 0.55);
+    --font-corpo: 'Montserrat', 'Segoe UI', sans-serif;
+    --font-gotica: 'UnifrakturMaguntia', Georgia, serif;
+    --font-script: 'Great Vibes', cursive;
+    --raio: 10px;
+    --raio-sm: 6px;
+}
+
+body {
+    background: var(--pal-fundo);
+    color: var(--pal-texto);
+    font-family: var(--font-corpo);
+    line-height: 1.6;
+}
+
+.font-script {
+    font-family: var(--font-script);
+    font-weight: 400;
+}
+
+.font-gotica {
+    font-family: var(--font-gotica);
+    color: var(--pal-laranja);
+    text-shadow: 0 0 12px rgba(255, 140, 0, 0.4);
+}
+
+/* —— Layout de página —— */
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 20px;
+}
+
+.page-container--narrow {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px 48px;
+}
+
+.section-title {
+    text-align: center;
+    font-family: var(--font-gotica);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    color: var(--pal-laranja);
+    margin-bottom: 40px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+/* —— Hero —— */
+.pal-hero {
+    background: var(--pal-preto);
+    color: var(--pal-branco);
+    padding: 72px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--pal-borda);
+}
+
+.pal-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 40% 60% at 0% 50%, rgba(255, 140, 0, 0.12), transparent),
+        radial-gradient(ellipse 40% 60% at 100% 50%, rgba(255, 140, 0, 0.12), transparent);
+    pointer-events: none;
+}
+
+.pal-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.pal-hero h1 {
+    font-family: var(--font-gotica);
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    color: var(--pal-laranja);
+    margin-bottom: 12px;
+    font-weight: 400;
+}
+
+.pal-hero .hero-script {
+    font-family: var(--font-script);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    color: var(--pal-branco);
+    margin-bottom: 24px;
+}
+
+.pal-hero p {
+    font-size: 1.1rem;
+    color: var(--pal-texto-suave);
+    max-width: 560px;
+    margin: 0 auto 28px;
+}
+
+/* —— Cards —— */
+.pal-card {
+    background: var(--pal-card);
+    border: 1px solid var(--pal-borda-suave);
+    border-radius: var(--raio);
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.pal-card:hover {
+    border-color: var(--pal-borda);
+}
+
+.service-card {
+    background: var(--pal-card);
+    border: 1px solid var(--pal-borda-suave);
+    border-radius: var(--raio);
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.service-card:hover {
+    border-color: var(--pal-laranja);
+    box-shadow: var(--pal-glow);
+    transform: translateY(-4px);
+}
+
+.service-card h3 {
+    color: var(--pal-laranja);
+    font-weight: 600;
+    padding: 16px 20px 8px;
+}
+
+.service-card p {
+    color: var(--pal-texto-suave);
+    padding: 0 20px;
+    font-size: 0.95rem;
+}
+
+.service-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85);
+}
+
+.service-price {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--pal-laranja);
+    padding: 12px 20px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+}
+
+/* —— Botões —— */
+.btn-primary,
+.btn-submit,
+.btn-cta {
+    display: inline-block;
+    background: linear-gradient(180deg, var(--pal-laranja-claro) 0%, var(--pal-laranja) 100%);
+    color: var(--pal-preto) !important;
+    border: none;
+    border-radius: var(--raio-sm);
+    padding: 14px 32px;
+    font-family: var(--font-corpo);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.btn-primary:hover,
+.btn-submit:hover:not(:disabled),
+.btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--pal-glow-forte);
+    color: var(--pal-preto) !important;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.05rem;
+}
+
+.btn-submit:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-agendar {
+    display: block;
+    margin: 16px 20px 20px;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid var(--pal-laranja);
+    color: var(--pal-laranja) !important;
+    text-align: center;
+    border-radius: var(--raio-sm);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.25s;
+}
+
+.btn-agendar:hover {
+    background: var(--pal-laranja);
+    color: var(--pal-preto) !important;
+    box-shadow: var(--pal-glow);
+}
+
+.btn-cta-center {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 24px auto 0;
+}
+
+/* —— Formulários —— */
+.form-page-title {
+    font-family: var(--font-gotica);
+    font-size: 1.75rem;
+    color: var(--pal-laranja);
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: 400;
+}
+
+.form-brand {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.form-brand .logo-form {
+    max-width: 220px;
+    height: auto;
+    margin: 0 auto 12px;
+    display: block;
+    filter: drop-shadow(0 0 16px rgba(255, 140, 0, 0.3));
+}
+
+.form-brand .subtitulo {
+    font-family: var(--font-script);
+    font-size: 1.35rem;
+    color: var(--pal-branco);
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--pal-branco);
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+}
+
+.form-group .label-dica {
+    font-weight: 400;
+    color: var(--pal-texto-suave);
+    font-size: 0.8rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--pal-borda-suave);
+    border-radius: var(--raio-sm);
+    font-size: 15px;
+    font-family: inherit;
+    background: var(--pal-preto);
+    color: var(--pal-branco);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--pal-laranja);
+    box-shadow: var(--pal-glow);
+}
+
+.form-group select option {
+    background: var(--pal-card);
+    color: var(--pal-branco);
+}
+
+/* —— Painel informativo —— */
+.info-panel {
+    background: var(--pal-preto);
+    border: 1px solid var(--pal-borda);
+    border-radius: var(--raio);
+    padding: 20px 22px;
+    margin-bottom: 28px;
+    font-size: 0.95rem;
+}
+
+.info-panel h3 {
+    font-family: var(--font-gotica);
+    font-size: 1.25rem;
+    color: var(--pal-laranja);
+    margin-bottom: 12px;
+    font-weight: 400;
+}
+
+.info-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+}
+
+.info-panel li {
+    padding: 4px 0;
+    color: var(--pal-texto-suave);
+}
+
+.info-panel li::before {
+    content: '◆ ';
+    color: var(--pal-laranja);
+    font-size: 0.65rem;
+    vertical-align: middle;
+}
+
+.instagram-link {
+    color: var(--pal-laranja) !important;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.instagram-link:hover {
+    text-decoration: underline;
+    text-shadow: 0 0 8px rgba(255, 140, 0, 0.5);
+}
+
+/* —— Horários (agendamento) —— */
+.horarios-section {
+    margin-top: 8px;
+    display: none;
+}
+
+.horarios-section.visivel {
+    display: block;
+}
+
+.horarios-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.horarios-header h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--pal-branco);
+}
+
+.horarios-header .dica {
+    font-size: 0.8rem;
+    color: var(--pal-texto-suave);
+    font-style: italic;
+}
+
+.horarios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.slot-btn {
+    padding: 12px 8px;
+    border: 1px solid var(--pal-borda);
+    border-radius: var(--raio-sm);
+    background: var(--pal-preto);
+    color: var(--pal-laranja);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-height: 48px;
+    font-family: inherit;
+}
+
+.slot-btn:hover:not(:disabled) {
+    border-color: var(--pal-laranja);
+    box-shadow: var(--pal-glow);
+    background: var(--pal-card);
+}
+
+.slot-btn.selecionado {
+    border-color: var(--pal-laranja);
+    background: linear-gradient(180deg, var(--pal-laranja-claro), var(--pal-laranja));
+    color: var(--pal-preto);
+    box-shadow: var(--pal-glow-forte);
+}
+
+.slot-btn.reservado,
+.slot-btn:disabled {
+    color: var(--pal-texto-suave);
+    font-style: italic;
+    cursor: not-allowed;
+    background: var(--pal-card);
+    border-color: var(--pal-borda-suave);
+    opacity: 0.7;
+}
+
+.horarios-rodape {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--pal-texto-suave);
+    font-style: italic;
+}
+
+.horarios-vazio,
+.horarios-carregando {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 20px;
+    color: var(--pal-texto-suave);
+}
+
+.horarios-aviso {
+    padding: 12px 14px;
+    background: rgba(255, 140, 0, 0.08);
+    border: 1px solid var(--pal-borda);
+    border-radius: var(--raio-sm);
+    color: var(--pal-laranja-claro);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.horarios-aviso.fechado {
+    background: rgba(180, 40, 40, 0.15);
+    border-color: rgba(220, 80, 80, 0.4);
+    color: #f0a0a0;
+}
+
+/* —— Alertas —— */
+.alert {
+    padding: 14px 18px;
+    border-radius: var(--raio-sm);
+    margin-bottom: 22px;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.alert-success {
+    background: rgba(255, 140, 0, 0.12);
+    color: var(--pal-laranja-claro);
+    border: 1px solid var(--pal-borda);
+}
+
+.alert-error {
+    background: rgba(180, 40, 40, 0.2);
+    color: #f5b0b0;
+    border: 1px solid rgba(220, 80, 80, 0.45);
+}
+
+/* —— Sobre —— */
+.sobre-texto {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--pal-texto-suave);
+}
+
+.sobre-texto p {
+    margin-bottom: 1.1em;
+}
+
+.sobre-texto p:last-child {
+    margin-bottom: 0;
+}
+
+.sobre-texto strong {
+    color: var(--pal-laranja);
+}
+
+/* date input — tema escuro */
+input[type="date"] {
+    color-scheme: dark;
+}
+
+/* —— Login barbeiro —— */
+body.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: var(--pal-preto);
+}
+
+body.login-page::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 50% 80% at 0% 50%, rgba(255, 140, 0, 0.1), transparent),
+        radial-gradient(ellipse 50% 80% at 100% 50%, rgba(255, 140, 0, 0.1), transparent);
+    pointer-events: none;
+}
+
+.login-box {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    background: var(--pal-card);
+    border: 1px solid var(--pal-borda);
+    border-radius: var(--raio);
+    padding: 40px 36px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+.login-box .logo-login {
+    max-width: 180px;
+    margin: 0 auto 20px;
+    display: block;
+    filter: drop-shadow(0 0 14px rgba(255, 140, 0, 0.35));
+}
+
+.login-box h1 {
+    font-family: var(--font-gotica);
+    font-size: 1.75rem;
+    color: var(--pal-laranja);
+    text-align: center;
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+.login-box .login-script {
+    font-family: var(--font-script);
+    text-align: center;
+    color: var(--pal-branco);
+    font-size: 1.2rem;
+    margin-bottom: 24px;
+}
+
+.barbeiro-badge {
+    display: inline-block;
+    background: var(--pal-laranja);
+    color: var(--pal-preto);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.login-footer-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-footer-link a {
+    color: var(--pal-texto-suave);
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.login-footer-link a:hover {
+    color: var(--pal-laranja);
+}
+
+@media (max-width: 768px) {
+    .horarios-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pal-card {
+        padding: 24px 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    .horarios-grid {
+        grid-template-columns: 1fr;
+    }
+}
